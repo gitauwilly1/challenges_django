@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Programmes - {{ school_name }}{% endblock %}
+
+{% block content %}
+    <h1>Available Programmes</h1>
+    <ul>
+        {% for course in courses %}
+            <li>
+                <strong>{{ course.name|title }}</strong> 
+                - Duration: {{ course.duration }} Months 
+                ({% if course.duration > 5 %}Full-time{% else %}Part-time{% endif %})
+                <br>
+                <small>Skill Level: {{ course.level|upper }}</small>
+            </li>
+        {% empty %}
+            <li>No programmes available at this time.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
